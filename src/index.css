@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar utility for horizontally scrollable nav on small screens */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Responsive image scaling with better browser compatibility */
+.responsive-logo {
+  transform-origin: top left;
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -ms-transform-origin: top left;
+}
+
+.responsive-bucket {
+  transform-origin: top left;
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -ms-transform-origin: top left;
+}
+
+/* Mobile phones - Portrait (320px - 480px) */
+@media screen and (max-width: 480px) {
+  .responsive-logo {
+    transform: scale(0.35);
+    -webkit-transform: scale(0.35);
+    -moz-transform: scale(0.35);
+    -ms-transform: scale(0.35);
+  }
+  .responsive-bucket {
+    transform: scale(0.35);
+    -webkit-transform: scale(0.35);
+    -moz-transform: scale(0.35);
+    -ms-transform: scale(0.35);
+  }
+}
+
+/* Mobile phones - Landscape (481px - 640px) */
+@media screen and (min-width: 481px) and (max-width: 640px) {
+  .responsive-logo {
+    transform: scale(0.45);
+    -webkit-transform: scale(0.45);
+    -moz-transform: scale(0.45);
+    -ms-transform: scale(0.45);
+  }
+  .responsive-bucket {
+    transform: scale(0.45);
+    -webkit-transform: scale(0.45);
+    -moz-transform: scale(0.45);
+    -ms-transform: scale(0.45);
+  }
+}
+
+/* Small tablets (641px - 768px) */
+@media screen and (min-width: 641px) and (max-width: 768px) {
+  .responsive-logo {
+    transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+  }
+  .responsive-bucket {
+    transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+  }
+}
+
+/* iPads and medium tablets (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .responsive-logo {
+    transform: scale(0.75);
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    -ms-transform: scale(0.75);
+  }
+  .responsive-bucket {
+    transform: scale(0.75);
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    -ms-transform: scale(0.75);
+  }
+}
+
+/* Small laptops (1025px - 1366px) */
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+  .responsive-logo {
+    transform: scale(0.85);
+    -webkit-transform: scale(0.85);
+    -moz-transform: scale(0.85);
+    -ms-transform: scale(0.85);
+  }
+  .responsive-bucket {
+    transform: scale(0.85);
+    -webkit-transform: scale(0.85);
+    -moz-transform: scale(0.85);
+    -ms-transform: scale(0.85);
+  }
+}
+
+/* Large laptops and desktops (1367px+) - keep original size */
+@media screen and (min-width: 1367px) {
+  .responsive-logo {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+  }
+  .responsive-bucket {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+  }
+}
+
+/* Safari specific fixes */
+@supports (-webkit-appearance: none) {
+  .responsive-logo,
+  .responsive-bucket {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* Edge specific fixes */
+@supports (-ms-ime-align: auto) {
+  .responsive-logo,
+  .responsive-bucket {
+    -ms-interpolation-mode: bicubic;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
