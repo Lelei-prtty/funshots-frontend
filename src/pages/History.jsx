@@ -258,8 +258,19 @@ function FixedHistoryTable({ icon, title, columns, data, computeTotalSales, form
     </div>
   )
 }
+function FixedDeliveryTable({
+  icon,
+  title,
+  columns,
+  data,
+  computeTotalSales,
+  formatCurrency,
+}) {
+  // REMOVE "Amount" column only
+  const filteredColumns = columns.filter(
+    (col) => col !== "Amount"
+  )
 
-function FixedDeliveryTable({ icon, title, columns, data, computeTotalSales, formatCurrency }) {
   return (
     <div className="w-full flex justify-center">
       <div className="w-full max-w-[1041px] border border-gray-300 rounded-2xl shadow-sm p-6 bg-white">
@@ -269,28 +280,35 @@ function FixedDeliveryTable({ icon, title, columns, data, computeTotalSales, for
           <h3 className="text-[#CF3847] font-bold text-2xl">{title}</h3>
         </div>
 
+        {/* HEADER */}
         <div
           className="grid font-bold text-[#F10F10] border-b border-gray-400 pb-2 mb-4 text-xs sm:text-sm"
           style={{
-            gridTemplateColumns: `repeat(${columns.length}, minmax(120px, 1fr))`,
+            gridTemplateColumns: `repeat(${filteredColumns.length}, minmax(120px, 1fr))`,
           }}
         >
-          {columns.map((col, i) => <div key={i}>{col}</div>)}
+          {filteredColumns.map((col, i) => (
+            <div key={i}>{col}</div>
+          ))}
         </div>
 
+        {/* ROWS */}
         {data.map((row, i) => (
           <div
             key={i}
             className="grid gap-3 py-3 border-b border-gray-200 text-xs sm:text-sm"
             style={{
-              gridTemplateColumns: `repeat(${columns.length}, minmax(120px, 1fr))`,
+              gridTemplateColumns: `repeat(${filteredColumns.length}, minmax(120px, 1fr))`,
             }}
           >
-            {columns.map((col, idx) => {
+            {filteredColumns.map((col, idx) => {
               const key = columnToKey(col)
               let val = row[key] ?? ""
 
-              if (col === "Amount Purchased") val = formatCurrency(computeTotalSales(row))
+      
+              if (col === "Amount Purchased") {
+                val = formatCurrency(computeTotalSales(row))
+              }
 
               return <div key={idx}>{val}</div>
             })}
@@ -300,6 +318,7 @@ function FixedDeliveryTable({ icon, title, columns, data, computeTotalSales, for
     </div>
   )
 }
+
 
 function columnToKey(col) {
   const map = {
