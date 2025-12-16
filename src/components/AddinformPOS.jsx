@@ -327,7 +327,7 @@ export default function AddInformPOS({
                 {/* Profit / Admin Inputs */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {[
-                    { label: "Total", field: "total" },
+                    { label: "Deposit", field: "deposit" },
                     { label: "Expenses", field: "expenses" },
                     { label: "Debt", field: "debt" },
                     { label: "Cash Advance", field: "cashAdvance" },
